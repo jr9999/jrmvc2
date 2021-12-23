@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.validation.Validator;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.View;
@@ -75,7 +76,12 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 	public View sample() {
 		return new JstlView("/WEB-INF/views/sample.jsp");
 	}
-	
+
+	@Bean
+	public View addStudent() {
+		return new JstlView("/WEB-INF/views/addStudent.jsp");
+	}
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
