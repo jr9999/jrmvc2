@@ -7,10 +7,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.BeanNameViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
@@ -19,17 +23,30 @@ import org.thymeleaf.templatemode.TemplateMode;
 @Configuration
 @ComponentScan(basePackages="com.jr")
 @EnableWebMvc
-public class MvcConfiguration implements WebMvcConfigurer {
+public class MyWebMvcConfigurer implements WebMvcConfigurer {
+
 	@Autowired
 	private ApplicationContext applicationContext;
 
+	/*
 	@Bean
     public ViewResolver viewResolver() {
 		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
 		resolver.setTemplateEngine(springTemplateEngine());
 		return resolver;
 	}
+	 */
 
+	@Bean
+	public ViewResolver internalResourceViewResolver() {
+		InternalResourceViewResolver bean = new InternalResourceViewResolver();
+		bean.setViewClass(JstlView.class);
+		bean.setPrefix("/WEB-INF/views/");
+		bean.setSuffix(".jsp");
+		return bean;
+	}
+
+	/*
 	@Bean
 	public SpringTemplateEngine springTemplateEngine() {
 	  SpringTemplateEngine engine = new SpringTemplateEngine();
@@ -46,6 +63,17 @@ public class MvcConfiguration implements WebMvcConfigurer {
 	  resolver.setSuffix(".html");
 	  resolver.setTemplateMode(TemplateMode.HTML);
 	  return resolver;
+	}
+	 */
+
+	@Bean
+	public BeanNameViewResolver beanNameViewResolver(){
+		return new BeanNameViewResolver();
+	}
+
+	@Bean
+	public View sample() {
+		return new JstlView("/WEB-INF/views/sample.jsp");
 	}
 	
 	@Override
