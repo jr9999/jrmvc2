@@ -82,6 +82,11 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 		return new JstlView("/WEB-INF/views/addStudent.jsp");
 	}
 
+	@Bean
+	public View addStudentAjax() {
+		return new JstlView("/WEB-INF/views/addStudentAjax.jsp");
+	}
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");

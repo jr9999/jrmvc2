@@ -21,7 +21,7 @@ public class AddStudentJsonController {
 
         AddStudentResponse addStudentResponse = new AddStudentResponse();
         addStudentResponse.setName(student.getName());
-        addStudentResponse.setId(12);
+        addStudentResponse.setId(student.getId());
 
         return addStudentResponse;
     }
