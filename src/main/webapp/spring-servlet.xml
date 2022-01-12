@@ -25,5 +25,5 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
     -->
-    <bean id = "studentValidator" class = "com.tutorialspoint.StudentValidator" />
+    <bean id = "studentValidator" class = "com.jr.StudentValidator" />
 </beans>
