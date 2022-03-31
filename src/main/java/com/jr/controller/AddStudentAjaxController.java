@@ -6,8 +6,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 @RestController
 public class AddStudentAjaxController {
+
+    private static final Log logger = LogFactory.getLog(AddStudentAjaxController.class);
 
     //List<Student> users;
 
@@ -17,6 +22,8 @@ public class AddStudentAjaxController {
     //@JsonView(Views.Public.class)
     @RequestMapping(value = "/ajaxstudent/api/add")
     public AddStudentAjaxResponse addStudentViaAjax(@RequestBody Student student) {
+
+        logger.info("doing addStudentViaAjax");
 
         AddStudentAjaxResponse result = new AddStudentAjaxResponse();
         result.setName(student.getName());

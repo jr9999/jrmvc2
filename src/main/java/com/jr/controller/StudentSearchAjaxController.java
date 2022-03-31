@@ -10,11 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 @RestController
 public class StudentSearchAjaxController {
 
+    private static final Log logger = LogFactory.getLog(StudentSearchAjaxController.class);
+
     @RequestMapping(value = "/ajaxstudent/api/search")
     public StudentSearchAjaxResponse getSearchResultViaAjax(@RequestBody StudentSearch studentSearch) {
+
+        logger.info("Performing getSearchResultViaAjax...");
 
         //TODO: use student search object to driv results.
         StudentSearchAjaxResponse studentSearchAjaxResponse = new StudentSearchAjaxResponse();
