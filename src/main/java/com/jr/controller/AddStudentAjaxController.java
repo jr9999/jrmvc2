@@ -1,6 +1,6 @@
 package com.jr.controller;
 
-import com.jr.Student;
+import com.jr.data.redis.model.Student;
 import com.jr.response.AddStudentAjaxResponse;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

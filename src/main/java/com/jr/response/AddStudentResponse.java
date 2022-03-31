@@ -3,7 +3,7 @@ package com.jr.response;
 public class AddStudentResponse {
 
     private String name;
-    private Integer id;
+    private String id;
 
     public void setName(String name) {
         this.name = name;
@@ -13,11 +13,11 @@ public class AddStudentResponse {
         return name;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 }

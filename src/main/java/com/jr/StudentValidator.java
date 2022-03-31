@@ -1,5 +1,6 @@
 package com.jr;
 
+import com.jr.data.redis.model.Student;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
