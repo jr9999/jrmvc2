@@ -1,6 +1,6 @@
 package com.jr.controller;
 
-import com.jr.data.redis.model.Student;
+import com.jr.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -29,17 +29,12 @@ public class StudentController {
 
     @RequestMapping(value = "/addStudent", method = RequestMethod.GET)
     public ModelAndView student() {
-        return new ModelAndView("addStudent", "command",
-                new Student(new String("id1"),
-                        new String("name1"),
-                        Student.Gender.MALE, 3));
+        return new ModelAndView("addStudent", "command", new Student());
     }
 
     @ModelAttribute("student")
     public Student createStudentModel() {
-        return new Student(new String("id1"),
-                new String("name1"),
-                Student.Gender.MALE, 3);
+        return new Student();
     }
 
     @RequestMapping(value = "/addStudent", method = RequestMethod.POST)
@@ -52,6 +47,7 @@ public class StudentController {
             return "addStudent";
         }
         model.addAttribute("name", student.getName());
+        model.addAttribute("age", student.getAge());
         model.addAttribute("id", student.getId());
 
         return "result";

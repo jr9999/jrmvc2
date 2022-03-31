@@ -1,6 +1,6 @@
 package com.jr.controller;
 
-import com.jr.data.redis.model.Student;
+import com.jr.Student;
 import com.jr.response.StudentSearchAjaxResponse;
 import com.jr.spring.ajax.StudentSearch;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,13 +19,13 @@ public class StudentSearchAjaxController {
         //TODO: use student search object to driv results.
         StudentSearchAjaxResponse studentSearchAjaxResponse = new StudentSearchAjaxResponse();
         List<Student> studentList = new ArrayList<>();
-        Student student1 = new Student(new String("id1"),
-                new String("name1"),
-                Student.Gender.MALE, 3);
-        Student student2 = new Student(new String("id2"),
-                new String("name2"),
-                Student.Gender.FEMALE, 4);
+        Student student1 = new Student();
+        student1.setName("student1");
+        student1.setId(1);
         studentList.add(student1);
+        Student student2 = new Student();
+        student2.setName("student2");
+        student2.setId(2);
         studentList.add(student2);
         studentSearchAjaxResponse.setStudentList(studentList);
 

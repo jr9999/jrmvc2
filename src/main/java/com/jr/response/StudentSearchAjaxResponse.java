@@ -1,7 +1,6 @@
 package com.jr.response;
 
-
-import com.jr.data.redis.model.Student;
+import com.jr.Student;
 
 import java.util.List;
 

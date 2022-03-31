@@ -45,28 +45,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- spring beans needed for redis configuration -->
-		<!--
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis-reactive</artifactId>
-			<version>2.6.3</version>
-		</dependency>
-		-->
-
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-redis</artifactId>
-			<version>2.6.2</version>
-		</dependency>
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-			<version>4.1.1</version>
-			<type>jar</type>
-		</dependency>
-
-
 		<!-- CGLib for @Configuration -->
 		<dependency>
 			<groupId>cglib</groupId>
