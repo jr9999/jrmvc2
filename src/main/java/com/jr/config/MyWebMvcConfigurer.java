@@ -30,6 +30,8 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.session.data.redis.config.ConfigureRedisAction;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.session.web.context.AbstractHttpSessionApplicationInitializer;
+//import org.springframework.data.redis.connection.RedisConfiguration;
+import com.jr.config.RedisConfiguration;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -48,6 +50,7 @@ public class MyWebMvcConfigurer
 
 	@Autowired
 	private ApplicationContext applicationContext;
+	
 
 	@Bean
     public LettuceConnectionFactory lettuceConnectionFactory() {
