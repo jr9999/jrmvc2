@@ -18,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /*
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -28,13 +29,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) throws Exception {        
         http
           .httpBasic().and()
           .authorizeRequests()
           .antMatchers("/").hasRole("ADMIN")
+          .antMatchers("/addStudent").hasRole("ADMIN")
           .anyRequest().authenticated();
+          
     }
+    */
 
     @Bean
     public PasswordEncoder passwordEncoder() {

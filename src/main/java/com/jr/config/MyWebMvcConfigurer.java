@@ -29,20 +29,36 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.session.data.redis.config.ConfigureRedisAction;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
-import org.springframework.session.web.context.AbstractHttpSessionApplicationInitializer;
+//import org.springframework.session.web.context.AbstractHttpSessionApplicationInitializer;
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.User;
+
+/*
+import org.springframework.context.annotation.*;
+import org.springframework.security.config.annotation.authentication.builders.*;
+import org.springframework.security.config.annotation.web.configuration.*;
+*/
+
 //import org.springframework.data.redis.connection.RedisConfiguration;
+/*
 import com.jr.config.RedisConfiguration;
+
+import org.springframework.context.annotation.PropertySource;
+*/
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 
+//@PropertySource({"WEB-INF/config/application.properties"})
 @Configuration
 @ComponentScan(basePackages="com.jr")
 @EnableWebMvc
 @EnableRedisHttpSession
 public class MyWebMvcConfigurer 
-	extends AbstractHttpSessionApplicationInitializer  
+	extends AbstractSecurityWebApplicationInitializer 
 	implements WebMvcConfigurer {
 
 	private static final Log logger = LogFactory.getLog(MyWebMvcConfigurer.class);
@@ -51,6 +67,12 @@ public class MyWebMvcConfigurer
 	@Autowired
 	private ApplicationContext applicationContext;
 	
+	@Bean
+	public UserDetailsService userDetailsService() {
+		InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+		manager.createUser(User.withDefaultPasswordEncoder().username("user").password("password").roles("USER").build());
+		return manager;
+	}
 
 	@Bean
     public LettuceConnectionFactory lettuceConnectionFactory() {
