@@ -35,6 +35,8 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.User;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 /*
 import org.springframework.context.annotation.*;
 import org.springframework.security.config.annotation.authentication.builders.*;
@@ -63,10 +65,14 @@ public class MyWebMvcConfigurer
 
 	private static final Log logger = LogFactory.getLog(MyWebMvcConfigurer.class);
 
-
 	@Autowired
 	private ApplicationContext applicationContext;
 	
+	@Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
 	@Bean
 	public UserDetailsService userDetailsService() {
 		InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
