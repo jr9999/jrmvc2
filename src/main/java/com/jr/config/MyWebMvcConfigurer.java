@@ -1,5 +1,7 @@
 package com.jr.config;
 
+import com.jr.websession.ConferenceWebSessionHandlerMethodArgumentResolver;
+import com.jr.websession.ConferenceWebSessionManager;
 import io.lettuce.core.ReadFrom;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 //import org.springframework.validation.Validator;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.View;
@@ -52,6 +55,8 @@ import org.springframework.context.annotation.PropertySource;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.util.List;
 
 
 //@PropertySource({"WEB-INF/config/application.properties"})
@@ -188,6 +193,18 @@ public class MyWebMvcConfigurer
 	@Bean
 	public MultipartResolver multipartResolver(){
 		return new CommonsMultipartResolver();
+	}
+
+	/*
+	@Bean
+	public ConferenceWebSessionManager ConferenceWebSessionManager() {
+		return new ConferenceWebSessionManager();
+	}
+	 */
+
+	@Override
+	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+		argumentResolvers.add(new ConferenceWebSessionHandlerMethodArgumentResolver());
 	}
 	
 }

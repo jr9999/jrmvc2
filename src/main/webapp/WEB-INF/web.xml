@@ -43,6 +43,7 @@
 		</init-param>
 	</filter>
 
+	<!--
 	<filter> 
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -52,6 +53,7 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	-->
 
 	<!--
     <filter-mapping>
@@ -76,22 +78,24 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
+	<!--
 	<servlet>
 		<servlet-name>jersey-serlvet</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>jersey.config.server.provider.packages</param-name>
-			<!-- Service or resources to be placed in the following package -->
+			<!Service or resources to be placed in the following package>
 			<param-value>com.jr.jersey.resources</param-value>
 		</init-param>
 
-		<!-- Application configuration, used for registering resources like filters  -->
+		<!Application configuration, used for registering resources like filters>
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
 			<param-value>com.jr.jersey.config.JerseyApplicationConfig</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	-->
 
 	<servlet-mapping>
 		<servlet-name>SpringDispatcher</servlet-name>
@@ -99,10 +103,12 @@
 	</servlet-mapping>
 
 	<!-- Url mapping, usage-http://domainname:port/appname/api/ -->
+	<!--
 	<servlet-mapping>
 		<servlet-name>jersey-serlvet</servlet-name>
 		<url-pattern>/jersey-api/*</url-pattern>
 	</servlet-mapping>
+	-->
 	
 
 	<session-config>
